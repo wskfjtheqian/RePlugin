@@ -17,6 +17,7 @@
 package com.qihoo360.replugin.sample.demo3
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -66,7 +67,6 @@ class MainActivity : Activity() {
         }))
 
 
-
         // =========
         // Other Components
         // =========
@@ -99,6 +99,10 @@ class MainActivity : Activity() {
                 Toast.makeText(v.context, "", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()
             }
+        }))
+
+        mItems.add(TestItem("Get plugin versionCode and versionName", View.OnClickListener { v ->
+            AlertDialog.Builder(this).setMessage("versionCode = ${BuildConfig.VERSION_CODE} \n versionName = ${BuildConfig.VERSION_NAME}").show();
         }))
 
     }
