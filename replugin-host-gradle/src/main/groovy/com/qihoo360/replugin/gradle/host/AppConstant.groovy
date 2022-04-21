@@ -17,30 +17,30 @@
 package com.qihoo360.replugin.gradle.host
 
 /**
- * ³ÌÐò³£Á¿¶¨ÒåÇø
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author RePlugin Team
  */
 class AppConstant {
 
-    /** °æ±¾ºÅ */
+    /** ï¿½æ±¾ï¿½ï¿½ */
     def static final VER = "2.3.4"
 
-    /** ´òÓ¡ÐÅÏ¢Ê±ºòµÄÇ°×º */
+    /** ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢Ê±ï¿½ï¿½ï¿½Ç°×º */
     def static final TAG = "< replugin-host-v${VER} >"
 
-    /** Íâ²¿ÓÃ»§ÅäÖÃÐÅÏ¢ */
+    /** ï¿½â²¿ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
     def static final USER_CONFIG = "repluginHostConfig"
 
-    /** ÓÃ»§Task×é */
+    /** ï¿½Ã»ï¿½Taskï¿½ï¿½ */
     def static final TASKS_GROUP = "replugin-plugin"
 
     /** TaskÇ°×º */
     def static final TASKS_PREFIX = "rp"
 
-    /** ÓÃ»§Task:°²×°²å¼þ */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½×°ï¿½ï¿½ï¿½ */
     def static final TASK_SHOW_PLUGIN = TASKS_PREFIX + "ShowPlugins"
 
-    /** ÓÃ»§Task:GenerateÈÎÎñ */
+    /** ï¿½Ã»ï¿½Task:Generateï¿½ï¿½ï¿½ï¿½ */
     def static final TASK_GENERATE = TASKS_PREFIX + "Generate"
 
 

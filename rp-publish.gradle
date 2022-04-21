@@ -1,6 +1,6 @@
 // utilities
 
-def static replaceVariables(File file, String key, String value) {
+def static replaceVariables(def file, def key, def value) {
     if(!file.exists()) return
     def regex = '\\$\\{' + key + '\\}'
     file.write((file.text =~ /${regex}/).replaceAll(value))

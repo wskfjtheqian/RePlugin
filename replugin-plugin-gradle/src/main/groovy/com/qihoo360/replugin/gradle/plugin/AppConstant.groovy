@@ -22,48 +22,48 @@ package com.qihoo360.replugin.gradle.plugin
  */
 class AppConstant {
 
-    /** °æ±¾ºÅ */
+    /** ï¿½æ±¾ï¿½ï¿½ */
     def static final VER = "2.3.4"
 
-    /** ´òÓ¡ÐÅÏ¢Ê±ºòµÄÇ°×º */
+    /** ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢Ê±ï¿½ï¿½ï¿½Ç°×º */
     def static final TAG = "< replugin-plugin-v${VER} >"
 
-    /** Íâ²¿ÓÃ»§ÅäÖÃÐÅÏ¢ */
+    /** ï¿½â²¿ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
     def static final USER_CONFIG = "repluginPluginConfig"
 
-    /** ÓÃ»§Task×é */
+    /** ï¿½Ã»ï¿½Taskï¿½ï¿½ */
     def static final TASKS_GROUP = "replugin-plugin"
 
     /** TaskÇ°×º */
     def static final TASKS_PREFIX = "rp"
 
 
-    /** ÓÃ»§Task:Ç¿ÖÆÍ£Ö¹ËÞÖ÷app */
+    /** ï¿½Ã»ï¿½Task:Ç¿ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½app */
     def static final TASK_FORCE_STOP_HOST_APP = TASKS_PREFIX + "ForceStopHostApp"
 
-    /** ÓÃ»§Task:Æô¶¯ËÞÖ÷app */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½app */
     def static final TASK_START_HOST_APP = TASKS_PREFIX + "StartHostApp"
 
-    /** ÓÃ»§Task:ÖØÆôËÞÖ÷app */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½app */
     def static final TASK_RESTART_HOST_APP = TASKS_PREFIX + "RestartHostApp"
 
 
-    /** ÓÃ»§Task:°²×°²å¼þ */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½×°ï¿½ï¿½ï¿½ */
     def static final TASK_INSTALL_PLUGIN = TASKS_PREFIX + "InstallPlugin"
 
-    /** ÓÃ»§Task:°²×°²å¼þ */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½×°ï¿½ï¿½ï¿½ */
     def static final TASK_UNINSTALL_PLUGIN = TASKS_PREFIX + "UninstallPlugin"
 
-    /** ÓÃ»§Task:ÔËÐÐ²å¼þ */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ */
     def static final TASK_RUN_PLUGIN = TASKS_PREFIX + "RunPlugin"
 
-    /** ÓÃ»§Task:°²×°²¢ÔËÐÐ²å¼þ */
+    /** ï¿½Ã»ï¿½Task:ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ */
     def static final TASK_INSTALL_AND_RUN_PLUGIN = TASKS_PREFIX + "InstallAndRunPlugin"
 
 
-    /** ÅäÖÃÀý×Ó */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     static final String CONFIG_EXAMPLE = '''
-// Õâ¸öpluginÐèÒª·ÅÔÚandroidÅäÖÃÖ®ºó£¬ÒòÎªÐèÒª¶ÁÈ¡androidÖÐµÄÅäÖÃÏî
+// ï¿½ï¿½ï¿½pluginï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½androidï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Òªï¿½ï¿½È¡androidï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 apply plugin: 'replugin-plugin-gradle\'
 repluginPluginConfig {
     pluginName = "demo3"

@@ -68,6 +68,11 @@ public class RePlugin {
     public static final String PROCESS_PERSIST = "" + IPluginManager.PROCESS_PERSIST;
 
     /**
+     * 插件自己的 context; 解决非宿主调用时，context 为空的情况
+     */
+    private static Context context;
+
+    /**
      * 安装此插件 <p>
      * 注意： <p>
      * 1、这里只将APK移动（或复制）到“插件路径”下，不释放优化后的Dex和Native库，不会加载插件 <p>
@@ -615,7 +620,7 @@ public class RePlugin {
      *
      * @param pluginName 插件名
      * @param layoutName Layout名字
-     * @param root Optional view to be the parent of the generated hierarchy.
+     * @param root       Optional view to be the parent of the generated hierarchy.
      * @return 插件的View。若为Null则表示获取失败
      * @throws ClassCastException 若不是想要的那个View类型，或者ClassLoader不同，则可能会出现此异常。应确保View类型正确
      * @since 2.2.0 (老的host-lib版本也能使用)
@@ -1117,7 +1122,7 @@ public class RePlugin {
      * 取消对某个“跳转”类的注册，恢复原状。<p>
      * 请参见 registerHookingClass 的详细说明
      *
-     * @param source   要替换的类的全名
+     * @param source 要替换的类的全名
      * @see #registerHookingClass(String, ComponentName, Class)
      * @since 2.1.6
      */
@@ -1132,7 +1137,7 @@ public class RePlugin {
     /**
      * 注册一个可供其他模块调用的IBinder，供IPlugin.query使用
      *
-     * @param name 注册的IBinder名
+     * @param name   注册的IBinder名
      * @param binder 注册的IBinder对象
      */
     public static void registerPluginBinder(String name, IBinder binder) {
@@ -1141,6 +1146,7 @@ public class RePlugin {
 
     /**
      * 获取宿主的Context
+     *
      * @return 宿主的Context
      */
     public static Context getHostContext() {
@@ -1149,6 +1155,7 @@ public class RePlugin {
 
     /**
      * 获取宿主的ClassLoader
+     *
      * @return 宿主的ClassLoader
      */
     public static ClassLoader getHostClassLoader() {
@@ -1157,14 +1164,24 @@ public class RePlugin {
 
     /**
      * 获取该插件的PluginContext
+     *
      * @return
      */
     public static Context getPluginContext() {
-        return RePluginEnv.getPluginContext();
+        if (null == RePluginEnv.getPluginContext()) {
+            return context;
+        } else {
+            return RePluginEnv.getPluginContext();
+        }
+    }
+
+    public static void setPluginContext(Context context) {
+        RePlugin.context = context;
     }
 
     /**
      * 判断是否运行在宿主环境中
+     *
      * @return 是否运行在宿主环境
      */
     public static boolean isHostInitialized() {
