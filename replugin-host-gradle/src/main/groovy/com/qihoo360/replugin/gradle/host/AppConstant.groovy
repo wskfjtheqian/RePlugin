@@ -22,8 +22,8 @@ package com.qihoo360.replugin.gradle.host
  */
 class AppConstant {
 
-    /** ?��?? */
-    def static final VER = "2.3.5"
+    /** ????? */
+    def static final VER = "3.0.4"
 
     /** ???????????? */
     def static final TAG = "< replugin-host-v${VER} >"
