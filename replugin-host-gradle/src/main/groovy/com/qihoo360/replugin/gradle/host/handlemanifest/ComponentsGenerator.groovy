@@ -39,7 +39,8 @@ class ComponentsGenerator {
     def static final expV = 'false'
 
     def static final ori = 'android:screenOrientation'
-    def static final oriV = 'portrait'
+//    def static final oriV = 'portrait'
+    def static final oriV = 'landscape'
 
     def static final theme = 'android:theme'
     def static final themeTS = '@android:style/Theme.Translucent.NoTitleBar'

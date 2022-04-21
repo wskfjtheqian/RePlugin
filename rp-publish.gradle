@@ -127,15 +127,25 @@ tasks.withType(JavaCompile) {
 
 if ( pbBintayKey == null ){
 
-	System.err.println("\n>>>「publish.gradle」bintray access key is EMPTY, UPLOAD LOCAL ONLY!\n")
+	System.err.println("\n>>>[publish.gradle]bintray access key is EMPTY, UPLOAD LOCAL ONLY!")
 
+    def home = ""
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        home = System.getenv("HOMEDRIVE")+System.getenv("HOMEPATH")
+    }else{
+        home = System.getenv('HOME')
+    }
+
+	def localPath = "file://${home}/.m2/repository"
+
+    System.err.println(">>>[publish.gradle] Local path ${localPath}\n")
     ///// publish to LOCAL
 
     apply plugin: 'maven'
     final def theGroup = group // group will be reset to 'upload'
     uploadArchives {
        repositories.mavenDeployer {
-           repository(url: "file://${System.getenv('HOME')}/.m2/repository")
+           repository(url: localPath)
            pom.groupId = theGroup
            pom.version = version
            pom.artifactId = pbArtifactId
