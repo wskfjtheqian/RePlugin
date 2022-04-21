@@ -22,48 +22,48 @@ package com.qihoo360.replugin.gradle.plugin
  */
 class AppConstant {
 
-    /** �汾�� */
-    def static final VER = "2.3.4"
+    /** ?��?? */
+    def static final VER = "2.3.5"
 
-    /** ��ӡ��Ϣʱ���ǰ׺ */
+    /** ???????????? */
     def static final TAG = "< replugin-plugin-v${VER} >"
 
-    /** �ⲿ�û�������Ϣ */
+    /** ???????????? */
     def static final USER_CONFIG = "repluginPluginConfig"
 
-    /** �û�Task�� */
+    /** ???Task?? */
     def static final TASKS_GROUP = "replugin-plugin"
 
-    /** Taskǰ׺ */
+    /** Task?? */
     def static final TASKS_PREFIX = "rp"
 
 
-    /** �û�Task:ǿ��ֹͣ����app */
+    /** ???Task:?????????app */
     def static final TASK_FORCE_STOP_HOST_APP = TASKS_PREFIX + "ForceStopHostApp"
 
-    /** �û�Task:��������app */
+    /** ???Task:????????app */
     def static final TASK_START_HOST_APP = TASKS_PREFIX + "StartHostApp"
 
-    /** �û�Task:��������app */
+    /** ???Task:????????app */
     def static final TASK_RESTART_HOST_APP = TASKS_PREFIX + "RestartHostApp"
 
 
-    /** �û�Task:��װ��� */
+    /** ???Task:?????? */
     def static final TASK_INSTALL_PLUGIN = TASKS_PREFIX + "InstallPlugin"
 
-    /** �û�Task:��װ��� */
+    /** ???Task:?????? */
     def static final TASK_UNINSTALL_PLUGIN = TASKS_PREFIX + "UninstallPlugin"
 
-    /** �û�Task:���в�� */
+    /** ???Task:???��?? */
     def static final TASK_RUN_PLUGIN = TASKS_PREFIX + "RunPlugin"
 
-    /** �û�Task:��װ�����в�� */
+    /** ???Task:????????��?? */
     def static final TASK_INSTALL_AND_RUN_PLUGIN = TASKS_PREFIX + "InstallAndRunPlugin"
 
 
-    /** �������� */
+    /** ???????? */
     static final String CONFIG_EXAMPLE = '''
-// ���plugin��Ҫ����android����֮����Ϊ��Ҫ��ȡandroid�е�������
+// ???plugin???????android????????????????android?��???????
 apply plugin: 'replugin-plugin-gradle\'
 repluginPluginConfig {
     pluginName = "demo3"
