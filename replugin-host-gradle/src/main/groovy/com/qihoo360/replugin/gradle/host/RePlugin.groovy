@@ -18,6 +18,8 @@ package com.qihoo360.replugin.gradle.host
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.internal.variant.ApplicationVariantData
+import com.android.utils.StringHelper
 import com.qihoo360.replugin.gradle.compat.VariantCompat
 import com.qihoo360.replugin.gradle.host.creator.FileCreators
 import com.qihoo360.replugin.gradle.host.creator.IFileCreator
@@ -58,15 +60,12 @@ public class Replugin implements Plugin<Project> {
                 }
 
                 def generateBuildConfigTask = VariantCompat.getGenerateBuildConfigTask(variant)
-                def appID = generateBuildConfigTask.appPackageName
+                def appID = generateBuildConfigTask.appPackageName.get()
                 def newManifest = ComponentsGenerator.generateComponent(appID, config)
                 println "${TAG} countTask=${config.countTask}"
 
                 def variantData = variant.variantData
-                def scope = variantData.scope
-
-                //host generate task
-                def generateHostConfigTaskName = scope.getTaskName(AppConstant.TASK_GENERATE, "HostConfig")
+                def generateHostConfigTaskName = StringHelper.appendCapitalized(AppConstant.TASK_GENERATE, variantData.variantDslInfo.componentIdentity.name, "HostConfig")
                 def generateHostConfigTask = project.task(generateHostConfigTaskName)
 
                 generateHostConfigTask.doLast {
@@ -81,7 +80,7 @@ public class Replugin implements Plugin<Project> {
                 }
 
                 //json generate task
-                def generateBuiltinJsonTaskName = scope.getTaskName(AppConstant.TASK_GENERATE, "BuiltinJson")
+                def generateBuiltinJsonTaskName = StringHelper.appendCapitalized(AppConstant.TASK_GENERATE, variantData.variantDslInfo.componentIdentity.name, "BuiltinJson")
                 def generateBuiltinJsonTask = project.task(generateBuiltinJsonTaskName)
 
                 generateBuiltinJsonTask.doLast {
@@ -141,8 +140,7 @@ public class Replugin implements Plugin<Project> {
     // 添加 【查看所有插件信息】 任务
     def addShowPluginTask(def variant) {
         def variantData = variant.variantData
-        def scope = variantData.scope
-        def showPluginsTaskName = scope.getTaskName(AppConstant.TASK_SHOW_PLUGIN, "")
+        def showPluginsTaskName = StringHelper.appendCapitalized(AppConstant.TASK_GENERATE, variantData.variantDslInfo.componentIdentity.name, "")
         def showPluginsTask = project.task(showPluginsTaskName)
 
         showPluginsTask.doLast {

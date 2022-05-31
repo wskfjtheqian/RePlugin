@@ -16,8 +16,8 @@
 
 apply plugin: 'java'
 apply plugin: 'groovy'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
+//apply plugin: 'maven'
+//apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
@@ -39,17 +39,23 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.android.tools.build:gradle:3.5.4'
-    compile 'org.json:json:20160212'
-    compile 'org.codehaus.groovy:groovy:2.4.7'
-    compile 'com.squareup:javapoet:1.5.1'
+    implementation 'com.android.tools.build:gradle:4.2.0'
+    implementation 'org.json:json:20220320'
+    implementation 'org.codehaus.groovy:groovy:3.0.10'
+    implementation 'com.squareup:javapoet:1.13.0'
 
-    compile gradleApi()
-    compile localGroovy()
+    implementation gradleApi()
+    implementation localGroovy()
 
-    compile 'com.google.gradle:osdetector-gradle-plugin:1.2.1'
-    compile 'net.dongliu:apk-parser:2.2.0'
+    implementation 'com.google.gradle:osdetector-gradle-plugin:1.7.0'
+    implementation 'net.dongliu:apk-parser:2.6.10'
 }
 
+//jar {
+//    from {
+//        project.zipTree("net.dongliu:apk-parser:2.6.10")
+//    }
+//}
+
 project.ext.RP_ARTIFACT_ID = 'replugin-host-gradle'
-apply from: '../rp-publish.gradle'
+//apply from: '../rp-publish.gradle'

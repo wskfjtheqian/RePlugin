@@ -16,7 +16,9 @@
 
 package com.qihoo360.replugin.gradle.host.creator.impl.java
 
+import com.android.build.gradle.internal.scope.GlobalScope
 import com.qihoo360.replugin.gradle.host.creator.IFileCreator
+import org.gradle.api.Project
 
 /**
  * @author RePlugin Team
@@ -32,12 +34,14 @@ public class RePluginHostConfigCreator implements IFileCreator {
     def fileDir
     def fileName
 
-    def RePluginHostConfigCreator(def project, def variant, def cfg) {
+    def RePluginHostConfigCreator(Project project, def variant, def cfg) {
         this.project = project
         this.variant = variant;
         this.config = cfg
-        //make it generated in buildConfig output dir so that we don't need to hook anything
-        File buildConfigGeneratedDir = this.variant.getVariantData().getScope().getBuildConfigSourceOutputDir()
+
+        var buildDir =  project.buildDir
+        var dirName = variant.variantData.variantDslInfo.dirName
+        File buildConfigGeneratedDir = new File(buildDir.path + "/generated/source/buildConfig/" + dirName);
         fileName = HOST_CONFIG_NAME;
         fileDir = new File(buildConfigGeneratedDir, HOST_CONFIG_PATH)
     }
