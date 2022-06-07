@@ -1,18 +1,30 @@
 package com.qihoo360.replugin.gradle.compat
 
+import com.android.build.gradle.internal.scope.GlobalScope
 import com.android.sdklib.IAndroidTarget
 
 /**
  * @author hyongbai
  */
 class ScopeCompat {
-    static def getAdbExecutable(def scope) {
+    static def getAdbExecutable(GlobalScope scope) {
         final MetaClass scopeClz = scope.metaClass
         if (scopeClz.hasProperty(scope, "androidBuilder")) {
             return scope.androidBuilder.sdkInfo.adb
         }
         if (scopeClz.hasProperty(scope, "sdkComponents")) {
-            return scope.sdkComponents.adbExecutableProvider.get()
+            return scope.getVersionedSdkLoader().get().adbExecutableProvider.get().asFile
+        }
+    }
+
+    static def getAndroidJar(GlobalScope scope) {
+        final MetaClass scopeClz = scope.metaClass
+
+        if (scopeClz.hasProperty(scope, "androidBuilder")) {
+            return scope.getAndroidBuilder().getTarget().getPath(IAndr oidTarget.ANDROID_JAR)
+        }
+        if (scopeClz.hasProperty(scope, "sdkComponents")) {
+            return scope.getVersionedSdkLoader().get().androidJarProvider.get().path
         }
     }
 
@@ -26,15 +38,4 @@ class ScopeCompat {
 //
 //        return globalScope.getAndroidBuilder().getTarget().getPath(IAndroidTarget.ANDROID_JAR)
 //    }
-
-    static def getAndroidJar(def scope){
-        final MetaClass scopeClz = scope.metaClass
-
-        if (scopeClz.hasProperty(scope, "androidBuilder")) {
-            return scope.getAndroidBuilder().getTarget().getPath(IAndroidTarget.ANDROID_JAR)
-        }
-        if (scopeClz.hasProperty(scope, "sdkComponents")) {
-            return scope.sdkComponents.androidJarProvider.get().getAbsolutePath()
-        }
-    }
 }

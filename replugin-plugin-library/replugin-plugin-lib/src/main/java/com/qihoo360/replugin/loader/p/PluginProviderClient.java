@@ -28,6 +28,7 @@ import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
 
 import com.qihoo360.replugin.MethodInvoker;
+import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.RePluginFramework;
 import com.qihoo360.replugin.helper.LogDebug;
 
