@@ -114,6 +114,7 @@ public abstract class PluginActivity extends Activity {
         }
 
         super.startActivityForResult(intent, requestCode);
-
     }
+
+
 }

@@ -106,7 +106,7 @@ public class PluginLocalBroadcastManager {
 
     private static Object sOrigInstance;
 
-    public static Object getInstance(Context context) {
+    public static PluginLocalBroadcastManager getInstance(Context context) {
         synchronized (mLock) {
             if (RePluginFramework.mHostInitialized) {
                 try {
@@ -392,7 +392,7 @@ public class PluginLocalBroadcastManager {
             // 填充LocalBroadcastManager各方法
             final String localBroadcastManagerX = "androidx.localbroadcastmanager.content.LocalBroadcastManager";
             //在android x 编译环境下，如果开启了android.enableJetifier,编译时会把support 相关的常量字符串替换为android x的路径，所以这个地方用运行时赋值
-             String localBroadcastManagerV4 = "";
+            String localBroadcastManagerV4 = "";
             if (classLoader != null) {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("android");

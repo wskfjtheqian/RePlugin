@@ -18,6 +18,7 @@ package com.qihoo360.replugin.loader.p;
 
 import android.annotation.TargetApi;
 import android.content.ContentProviderClient;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.ContentObserver;
@@ -26,7 +27,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
-
 import com.qihoo360.replugin.MethodInvoker;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.RePluginFramework;
@@ -49,10 +49,8 @@ public class PluginProviderClient {
      *
      * @see android.content.ContentResolver#query(Uri, String[], String, String[], String)
      */
-    public static Cursor query(Context c, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        if (c == null) {
-            return null;
-        }
+    public static Cursor query(ContentResolver r, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
@@ -75,10 +73,8 @@ public class PluginProviderClient {
      * @see android.content.ContentResolver#query(Uri, String[], String, String[], String, CancellationSignal)
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static Cursor query(Context c, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder, CancellationSignal cancellationSignal) {
-        if (c == null) {
-            return null;
-        }
+    public static Cursor query(ContentResolver r, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder, CancellationSignal cancellationSignal) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder, cancellationSignal);
@@ -100,10 +96,8 @@ public class PluginProviderClient {
      *
      * @see android.content.ContentResolver#insert(Uri, ContentValues)
      */
-    public static Uri insert(Context c, Uri uri, ContentValues values) {
-        if (c == null) {
-            return null;
-        }
+    public static Uri insert(ContentResolver r, Uri uri, ContentValues values) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().insert(uri, values);
@@ -125,10 +119,8 @@ public class PluginProviderClient {
      *
      * @see android.content.ContentResolver#bulkInsert(Uri, ContentValues[])
      */
-    public static int bulkInsert(Context c, Uri uri, ContentValues[] values) {
-        if (c == null) {
-            return 0;
-        }
+    public static int bulkInsert(ContentResolver r, Uri uri, ContentValues[] values) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().bulkInsert(uri, values);
@@ -153,10 +145,8 @@ public class PluginProviderClient {
      *
      * @see android.content.ContentResolver#delete(Uri, String, String[])
      */
-    public static int delete(Context c, Uri uri, String selection, String[] selectionArgs) {
-        if (c == null) {
-            return 0;
-        }
+    public static int delete(ContentResolver r, Uri uri, String selection, String[] selectionArgs) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().delete(uri, selection, selectionArgs);
@@ -181,10 +171,8 @@ public class PluginProviderClient {
      *
      * @see android.content.ContentResolver#update(Uri, ContentValues, String, String[])
      */
-    public static int update(Context c, Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        if (c == null) {
-            return 0;
-        }
+    public static int update(ContentResolver r, Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().update(uri, values, selection, selectionArgs);
@@ -209,10 +197,8 @@ public class PluginProviderClient {
      *
      * @see android.content.ContentResolver#getType(Uri)
      */
-    public static String getType(Context c, Uri uri) {
-        if (c == null) {
-            return null;
-        }
+    public static String getType(ContentResolver r, Uri uri) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().getType(uri);
@@ -232,10 +218,8 @@ public class PluginProviderClient {
         return null;
     }
 
-    public static InputStream openInputStream(Context c, Uri uri) {
-        if (c == null) {
-            return null;
-        }
+    public static InputStream openInputStream(ContentResolver r, Uri uri) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             try {
@@ -260,10 +244,8 @@ public class PluginProviderClient {
         return null;
     }
 
-    public static OutputStream openOutputStream(Context c, Uri uri) {
-        if (c == null) {
-            return null;
-        }
+    public static OutputStream openOutputStream(ContentResolver r, Uri uri) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             try {
@@ -289,10 +271,8 @@ public class PluginProviderClient {
     }
 
     @TargetApi(3)
-    public static OutputStream openOutputStream(Context c, Uri uri, String mode) {
-        if (c == null) {
-            return null;
-        }
+    public static OutputStream openOutputStream(ContentResolver r, Uri uri, String mode) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             try {
@@ -318,11 +298,8 @@ public class PluginProviderClient {
     }
 
 
-    public static ParcelFileDescriptor openFileDescriptor(Context c, Uri uri, String mode) {
-        if (c == null) {
-            return null;
-        }
-
+    public static ParcelFileDescriptor openFileDescriptor(ContentResolver r, Uri uri, String mode) {
+        Context c = RePlugin.getPluginContext();
         if (!RePluginFramework.mHostInitialized) {
             try {
                 return c.getContentResolver().openFileDescriptor(uri, mode);
@@ -347,11 +324,8 @@ public class PluginProviderClient {
     }
 
     @TargetApi(19)
-    public static ParcelFileDescriptor openFileDescriptor(Context c, Uri uri, String mode, CancellationSignal cancellationSignal) {
-        if (c == null) {
-            return null;
-        }
-
+    public static ParcelFileDescriptor openFileDescriptor(ContentResolver r, Uri uri, String mode, CancellationSignal cancellationSignal) {
+        Context c = RePlugin.getPluginContext();
         if (!RePluginFramework.mHostInitialized) {
             try {
                 return c.getContentResolver().openFileDescriptor(uri, mode, cancellationSignal);
@@ -375,11 +349,8 @@ public class PluginProviderClient {
         return null;
     }
 
-    public static void registerContentObserver(Context c, Uri uri, boolean notifyForDescendents, ContentObserver observer) {
-        if (c == null) {
-            return;
-        }
-
+    public static void registerContentObserver(ContentResolver r, Uri uri, boolean notifyForDescendents, ContentObserver observer) {
+        Context c = RePlugin.getPluginContext();
         if (!RePluginFramework.mHostInitialized) {
             c.getContentResolver().registerContentObserver(uri, notifyForDescendents, observer);
             return;
@@ -401,15 +372,13 @@ public class PluginProviderClient {
     /**
      * TODO 支持{@link android.content.ContentResolver#acquireContentProviderClient(Uri)}
      *
-     * @param c
+     * @paramr c
      * @param name
      * @return
      */
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    public static ContentProviderClient acquireContentProviderClient(Context c, String name) {
-        if (c == null) {
-            return null;
-        }
+    public static ContentProviderClient acquireContentProviderClient(ContentResolver r, String name) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             return c.getContentResolver().acquireContentProviderClient(name);
@@ -428,10 +397,8 @@ public class PluginProviderClient {
         return null;
     }
 
-    public static void notifyChange(Context c, Uri uri, ContentObserver observer) {
-        if (c == null) {
-            return;
-        }
+    public static void notifyChange(ContentResolver r, Uri uri, ContentObserver observer) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             c.getContentResolver().notifyChange(uri, observer);
@@ -446,10 +413,9 @@ public class PluginProviderClient {
             }
         }
     }
-    public static void notifyChange(Context c, Uri uri, ContentObserver observer, boolean b) {
-        if (c == null) {
-            return;
-        }
+
+    public static void notifyChange(ContentResolver r, Uri uri, ContentObserver observer, boolean b) {
+        Context c = RePlugin.getPluginContext();
 
         if (!RePluginFramework.mHostInitialized) {
             c.getContentResolver().notifyChange(uri, observer, b);
@@ -465,11 +431,8 @@ public class PluginProviderClient {
         }
     }
 
-    public static Uri toCalledUri(Context c, Uri uri) {
-        if (c == null) {
-            return null;
-        }
-
+    public static Uri toCalledUri(ContentResolver r, Uri uri) {
+        Context c = RePlugin.getPluginContext();
         if (!RePluginFramework.mHostInitialized) {
             return uri;
         }
@@ -488,11 +451,8 @@ public class PluginProviderClient {
         return null;
     }
 
-    public static Uri toCalledUri(Context c, String plugin, Uri uri, int process) {
-        if (c == null) {
-            return null;
-        }
-
+    public static Uri toCalledUri(ContentResolver r, String plugin, Uri uri, int process) {
+        Context c = RePlugin.getPluginContext();
         if (!RePluginFramework.mHostInitialized) {
             return uri;
         }

@@ -1,11 +1,11 @@
 package com.qihoo360.replugin.loader.r;
 
-import android.content.Context;
+import android.content.res.Resources;
+import com.qihoo360.replugin.RePlugin;
 
-public abstract class PluginResources {
-    final static String PackageName = "com.plugin.package_name";
-
-    public static int getIdentifier(Context context, String name, String defType, String defPackage) {
-        return context.getResources().getIdentifier(name, defType, defPackage);
+public class PluginResources {
+    public static int getIdentifier(Resources resources, String name, String defType, String defPackage) {
+        defPackage = RePlugin.getPackageName();
+        return resources.getIdentifier(name, defType, defPackage);
     }
 }
