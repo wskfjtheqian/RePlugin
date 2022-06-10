@@ -16,8 +16,8 @@
 
 apply plugin: 'java'
 apply plugin: 'groovy'
-//apply plugin: 'maven'
-//apply plugin: 'maven-publish'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
@@ -39,7 +39,7 @@ buildscript {
 }
 
 dependencies {
-    implementation 'com.android.tools.build:gradle:4.2.0'
+    implementation 'com.android.tools.build:gradle4.2.0'
     implementation 'org.json:json:20220320'
     implementation 'org.codehaus.groovy:groovy:3.0.10'
     implementation 'com.squareup:javapoet:1.13.0'
@@ -58,4 +58,4 @@ dependencies {
 //}
 
 project.ext.RP_ARTIFACT_ID = 'replugin-host-gradle'
-//apply from: '../rp-publish.gradle'
+apply from: '../rp-publish.gradle'

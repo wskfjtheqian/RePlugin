@@ -22,7 +22,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath 'com.android.tools.build:gradle4.2.0'
         classpath "com.qihoo360.replugin:replugin-plugin-gradle:${RP_VERSION}"
     }
 }
