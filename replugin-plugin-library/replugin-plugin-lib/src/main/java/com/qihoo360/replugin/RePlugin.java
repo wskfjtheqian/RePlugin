@@ -72,6 +72,21 @@ public class RePlugin {
      */
     private static Context context;
 
+
+    /**
+     * 插件自己的 packageName;
+     */
+    private static String packageName;
+
+
+    public static String getPackageName() {
+        return packageName;
+    }
+
+    public static void setPackageName(String packageName) {
+        RePlugin.packageName = packageName;
+    }
+
     /**
      * 安装此插件 <p>
      * 注意： <p>

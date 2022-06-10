@@ -106,7 +106,7 @@ public class PluginLocalBroadcastManager {
 
     private static Object sOrigInstance;
 
-    public static Object getInstance(Context context) {
+    public static PluginLocalBroadcastManager getInstance(Context context) {
         synchronized (mLock) {
             if (RePluginFramework.mHostInitialized) {
                 try {
