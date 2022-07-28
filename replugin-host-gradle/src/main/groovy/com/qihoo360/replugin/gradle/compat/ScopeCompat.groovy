@@ -21,7 +21,7 @@ class ScopeCompat {
         final MetaClass scopeClz = scope.metaClass
 
         if (scopeClz.hasProperty(scope, "androidBuilder")) {
-            return scope.getAndroidBuilder().getTarget().getPath(IAndr oidTarget.ANDROID_JAR)
+            return scope.getAndroidBuilder().getTarget().getPath(IAndroidTarget.ANDROID_JAR)
         }
         if (scopeClz.hasProperty(scope, "sdkComponents")) {
             return scope.getVersionedSdkLoader().get().androidJarProvider.get().path

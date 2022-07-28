@@ -18,7 +18,6 @@ package com.qihoo360.replugin.gradle.host
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.internal.variant.ApplicationVariantData
 import com.android.utils.StringHelper
 import com.qihoo360.replugin.gradle.compat.VariantCompat
 import com.qihoo360.replugin.gradle.host.creator.FileCreators
